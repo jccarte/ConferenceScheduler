@@ -1,4 +1,12 @@
 ConferenceScheduler::Application.routes.draw do
+
+
+
+  resources :conference_rooms do
+    resources :events
+  end
+
+
   root to: "calendar#index"
 
   # The priority is based upon order of creation:

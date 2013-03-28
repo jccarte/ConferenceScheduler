@@ -1,0 +1,5 @@
+<h1> stuff </h1>
+
+<% for entry in @events.models: %>
+<%= entry.get('title') %>
+<% end %>
