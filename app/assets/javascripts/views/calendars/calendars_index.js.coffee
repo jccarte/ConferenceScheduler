@@ -7,11 +7,15 @@ class ConferenceScheduler.Views.CalendarsIndex extends Backbone.View
 
   initialize: ->
     @collection.on('sync', @render, this)
+    @results = ''
 
   render: ->
-    $(@el).html(@template(rooms: @collection))
+    $(@el).html(@template(rooms: @results))
     this
 
   searchRooms: (event)->
     event.preventDefault()
-    alert "you searched!"
+    @results = @collection.where({building: $("#searchfield").val()})
+
+    #alert(JSON.stringify(@results))
+    $(@el).html(@template(rooms: @results))
