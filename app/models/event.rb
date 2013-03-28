@@ -1,4 +1,4 @@
 class Event < ActiveRecord::Base
-  attr_accessible :color, :conference_room_id, :ends_at, :starts_at, :title
+  attr_accessible :color, :conference_room_id, :end, :start, :title
   belongs_to :ConferenceRoom
 end
