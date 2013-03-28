@@ -3,28 +3,32 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
   template: JST['calendars/show']
 
   initialize: ->
-    @collection.on('reset', @render, this)
+
+    @collection.on('sync', @addEvents, this)
 
   render: ->
-    alert @collection.length
-    $(@el).html(@template(events: @collection))
-    #$(@el).fullCalendar({
-    #  header: {
-    #        left: 'prev,next today',
-    #        center: 'title',
-    #        right: 'month,basicWeek,basicDay',
-    #        ignoreTimezone: false
-    #    },
-    #    selectable: true,
-    #    selectHelper: true,
-    #    editable: true
-#
-    #})
 
+    $(@el).fullCalendar({
+      header: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'month,basicWeek,basicDay',
+            ignoreTimezone: false
+        },
+        selectable: true,
+        selectHelper: true,
+        editable: true,
+        eventClick: (calEvent, jsEvent, view)->
+          alert('Event: ' + calEvent.title)
+        ,
+        dayClick: ->
+          alert('Day clicked!')
 
-#    $(@el).fullCalendar('addEventSource', @collection.toJSON())
+    })
     this
 
   addEvents: ->
     $(@el).fullCalendar('addEventSource', @collection.toJSON())
-    alert @collection.length
+    console.log(@collection.length)
+
+  eventClick: ->

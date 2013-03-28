@@ -1,5 +1,14 @@
 class ConferenceRoomsController < ApplicationController
 
+  def index
+    @rooms = ConferenceRoom.all
+    respond_to do |format|
+      format.html
+      format.json  { render :json => @rooms }
+      format.js  { render :json => @rooms }
+    end
+  end
+
   def show
     @events = ConferenceRoom.find(params[:id]).Events
 

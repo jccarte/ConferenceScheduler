@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328024231) do
+ActiveRecord::Schema.define(:version => 20130328141104) do
 
   create_table "conference_rooms", :force => true do |t|
     t.integer  "capacity"
@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(:version => 20130328024231) do
   end
 
   create_table "events", :force => true do |t|
-    t.datetime "starts_at"
-    t.datetime "ends_at"
+    t.datetime "start"
+    t.datetime "end"
     t.string   "title"
     t.string   "color"
     t.integer  "conference_room_id"

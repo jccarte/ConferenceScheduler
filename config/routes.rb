@@ -1,6 +1,6 @@
 ConferenceScheduler::Application.routes.draw do
 
-
+resources :events
 
   resources :conference_rooms do
     resources :events

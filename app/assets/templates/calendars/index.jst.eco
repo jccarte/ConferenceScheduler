@@ -1,1 +1,14 @@
-STUFF
+<h1>Conference Scheduler<h1>
+<form id="search">
+  <input type="text" name="room" id = "search">
+  <input type="submit" value="Search">
+</form>
+<div id="results">
+<ul>
+<% for entry in @rooms.models: %>
+<li>
+<a href="#calendars/<%= entry.get('id')%>"><%= entry.get('name') %></a>
+</li>
+<% end %>
+</ul>
+</div>
