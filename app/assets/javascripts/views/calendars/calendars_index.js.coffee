@@ -7,10 +7,9 @@ class ConferenceScheduler.Views.CalendarsIndex extends Backbone.View
 
   initialize: ->
     @collection.on('sync', @render, this)
-    @results = ''
 
   render: ->
-    $(@el).html(@template(rooms: @results))
+    $(@el).html(@template(rooms: @collection.models))
     this
 
   searchRooms: (event)->

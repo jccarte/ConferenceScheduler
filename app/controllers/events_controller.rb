@@ -3,12 +3,21 @@ class EventsController < ApplicationController
 
   def index
     respond_with Event.all
-    #@events = Event.all
-#
-#    #respond_to do |format|
-#    #  format.html { render :json => @events }
-#    #  format.json  { render :json => @events }
-    #  format.js  { render :json => @events }
-    #end
+  end
+  def show
+    #respond_with Entry.find(params[:id])
+  end
+
+  def create
+    print params
+    respond_with Event.create(params[:event].merge(conference_room_id: params[:conference_room_id]))
+  end
+
+  def update
+  #  respond_with Entry.update(params[:id], params[:entry])
+  end
+
+  def destroy
+    #respond_with Entry.destroy(params[:id])
   end
 end
