@@ -4,7 +4,7 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
 
   initialize: ->
     _.bindAll this
-    @collection.once('sync', @showEvents, this)
+    @collection.on('reset', @showEvents, this)
     @collection.on('add', @addEvent, this)
     @eventView = new ConferenceScheduler.Views.CalendarsNewEvent()
 
@@ -31,11 +31,12 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
 
   showEvents: ->
     $(@el).fullCalendar('addEventSource', @collection.toJSON())
-    console.log(@collection.length)
 
   addEvent: (event)->
     console.log("addEvent called")
-    $(@el).fullCalendar('renderEvent', event.toJSON())
+    #$(@el).fullCalendar('renderEvent', event.toJSON())
+    $(@el).fullCalendar('removeEvents')
+    $(@el).fullCalendar('addEventSource', @collection.toJSON())
 
   dayClick: (startDate, endDate)->
     #@eventView.collection = @collection
