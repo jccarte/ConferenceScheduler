@@ -4,7 +4,7 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
 
   initialize: ->
     _.bindAll this
-    #@collection.once('sync', @showEvents, this)
+    @collection.once('sync', @showEvents, this)
     @collection.on('add', @addEvent, this)
     @eventView = new ConferenceScheduler.Views.CalendarsNewEvent()
 

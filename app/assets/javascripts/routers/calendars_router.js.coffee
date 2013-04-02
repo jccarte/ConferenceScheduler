@@ -16,7 +16,7 @@ class ConferenceScheduler.Routers.Calendars extends Backbone.Router
   show: (id)->
 
     @events = new ConferenceScheduler.Collections.Events([], {id: parseInt(id)})
-    @events.fetch({error:  ->  console.log(arguments) })
+    @events.fetch({reset: true})
     view = new ConferenceScheduler.Views.CalendarsShow(collection: @events)
     $('#container').html(view.render().el)
     view.$el.fullCalendar('render')
