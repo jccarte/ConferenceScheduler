@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130328141104) do
+ActiveRecord::Schema.define(:version => 20130403173016) do
 
   create_table "conference_rooms", :force => true do |t|
     t.integer  "capacity"
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20130328141104) do
     t.integer  "conference_room_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.boolean  "allDay"
   end
 
 end
