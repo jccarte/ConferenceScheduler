@@ -14,11 +14,13 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
       header: {
             left: 'prev,next today',
             center: 'title',
-            allDayDefault: false,
-            theme: true,
             right: 'month,agendaWeek,agendaDay',
-            ignoreTimezone: false
         },
+        minTime: 6,
+        ignoreTimezone: false
+        maxTime: 21,
+        allDayDefault: false,
+        theme: true,
         selectable: true,
         selectHelper: true,
         editable: true,
