@@ -25,6 +25,7 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
         selectHelper: true,
         editable: true,
         endParam: "endAt",
+        startParam: "start",
         eventClick: (calEvent, jsEvent, view)->
           alert('Event: ' + calEvent.title)
         ,
@@ -45,9 +46,10 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
     $(@el).fullCalendar('removeEvents')
     $(@el).fullCalendar('addEventSource', @collection.toJSON())
 
-  dayClick: (startDate, endDate)->
+  dayClick: (startDate, endDate, allDay)->
     #@eventView.collection = @collection
-    newEvent = new ConferenceScheduler.Models.Event({start: startDate, endAt: endDate, allDay: false}, {collId: @collection.getId()});
+    console.log(allDay)
+    newEvent = new ConferenceScheduler.Models.Event({start: startDate, endAt: endDate, allDay: allDay}, {collId: @collection.getId()});
     eventView = new ConferenceScheduler.Views.CalendarsNewEvent(collection: @collection, model: newEvent)
     console.log("DAYCLICKED" + @collection.length)
     eventView.render()
