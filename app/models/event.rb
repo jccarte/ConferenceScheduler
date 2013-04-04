@@ -13,10 +13,11 @@ class Event < ActiveRecord::Base
   end
 
   def available2
-    all = Event.find_all_by_conference_room_id(1)
+    all = Event.find_all_by_conference_room_id(self.conference_room_id)
     all.each do | match |
-      next if (match.end < self.start or self.end < match.start)
+      next if ((match.end < self.start) or (self.end < match.start))
       errors.add(:Overlap, "Conference Room is already booked for this time period")
+      puts "#{self.title} not valid"
       break
     end
   end

@@ -23,6 +23,7 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
         allDayDefault: false,
         theme: true,
         selectable: true,
+        defaultEventMinutes: 1440,
         selectHelper: true,
         editable: true,
         #endParam: "end_at",
@@ -47,7 +48,11 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
 
   dayClick: (startDate, endDate, allDay)->
     #@eventView.collection = @collection
-    console.log(allDay)
+
+    if allDay
+      console.log endDate.getHours()
+      endDate.setHours(23)
+    console.log(endDate)
     newEvent = new ConferenceScheduler.Models.Event({start: startDate, end: endDate, allDay: allDay}, {collId: @collection.getId()});
     eventView = new ConferenceScheduler.Views.CalendarsNewEvent(collection: @collection, model: newEvent)
     eventView.render()
