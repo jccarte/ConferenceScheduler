@@ -1,5 +1,5 @@
 class Event < ActiveRecord::Base
-  validate :available
+  validate :available2
   attr_accessible :color, :conference_room_id, :end, :start, :title, :allDay
   belongs_to :ConferenceRoom
 
@@ -10,5 +10,14 @@ class Event < ActiveRecord::Base
       errors.add(:Overlap, "Conference Room is already booked for this time period")
     end
 
+  end
+
+  def available2
+    all = Event.find_all_by_conference_room_id(1)
+    all.each do | match |
+      next if (match.end < self.start or self.end < match.start)
+      errors.add(:Overlap, "Conference Room is already booked for this time period")
+      break
+    end
   end
 end
