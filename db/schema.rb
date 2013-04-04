@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(:version => 20130403234445) do
 
   create_table "events", :force => true do |t|
     t.datetime "start"
-    t.datetime "end_at"
+    t.datetime "end"
     t.string   "title"
     t.string   "color"
     t.integer  "conference_room_id"
