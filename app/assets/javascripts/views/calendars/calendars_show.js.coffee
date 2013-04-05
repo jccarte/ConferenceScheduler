@@ -18,6 +18,7 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
 
         },
         minTime: 6,
+        aspectRatio:2,
         maxTime: 21,
         ignoreTimezone: false,
         allDayDefault: false,

@@ -12,10 +12,11 @@ class ConferenceScheduler.Routers.Calendars extends Backbone.Router
     view = new ConferenceScheduler.Views.CalendarsIndex(collection: @rooms)
     $('#sidebar').html(view.render().el)
 
+
   show: (id)->
 
     @events = new ConferenceScheduler.Collections.Events([], {id: parseInt(id)})
     @events.fetch({reset: true})
     view = new ConferenceScheduler.Views.CalendarsShow(collection: @events)
-    $('#container').html(view.render().el)
+    $('#calendar').html(view.render().el)
     view.$el.fullCalendar('render')

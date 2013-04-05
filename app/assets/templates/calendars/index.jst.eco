@@ -1,4 +1,3 @@
-<h1>Conference Scheduler<h1>
 <form id="search">
   <input type="text" name="room" id = "searchfield">
   <input type="submit" value="Search">
@@ -8,11 +7,9 @@
   <ul>
   <% for entry in @rooms: %>
     <li>
-    <a href="#calendars/<%= entry.get('id')%>"><%= entry.get('name') %></a>
+    <a href="" class="room_link" id="<%= entry.get('id')%>"><%= entry.get('name') %></a>
     </li>
   <% end %>
   </ul>
 <% end %>
-</div>
-<div id="calendar">
 </div>
