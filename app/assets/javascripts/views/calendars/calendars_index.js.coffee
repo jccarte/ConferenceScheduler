@@ -1,7 +1,6 @@
 class ConferenceScheduler.Views.CalendarsIndex extends Backbone.View
 
   template: JST['calendars/index']
-  template2: JST['calendars/title']
 
   events:
     'submit #search': 'searchRooms'
@@ -28,5 +27,5 @@ class ConferenceScheduler.Views.CalendarsIndex extends Backbone.View
     calView = new ConferenceScheduler.Views.CalendarsShow(collection: @events)
     $('#calendar').html(calView.render().el)
     rname = event.target.innerText
-    $('#room-name').html(@template2(name: rname))
+    $('#room-name').html("<h3 class=\"text-center\">#{rname}</h1>")
     calView.$el.fullCalendar('render')
