@@ -26,6 +26,6 @@ class ConferenceScheduler.Views.CalendarsIndex extends Backbone.View
     @events.fetch({reset: true})
     calView = new ConferenceScheduler.Views.CalendarsShow(collection: @events)
     $('#calendar').html(calView.render().el)
-    rname = event.target.innerText
+    rname = event.target.text
     $('#room-name').html("<h3 class=\"text-center\">#{rname}</h1>")
     calView.$el.fullCalendar('render')
