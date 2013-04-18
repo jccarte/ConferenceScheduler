@@ -50,6 +50,10 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
   dayClick: (startDate, endDate, allDay)->
     #@eventView.collection = @collection
 
+    view = $(@el).fullCalendar('getView').name
+    if startDate.toString() == endDate.toString() && view == 'month'
+      $(@el).fullCalendar('changeView', 'agendaWeek')
+      return
     if allDay
       console.log endDate.getHours()
       endDate.setHours(23)
