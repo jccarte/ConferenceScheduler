@@ -52,6 +52,7 @@ class ConferenceScheduler.Views.CalendarsShow extends Backbone.View
 
     view = $(@el).fullCalendar('getView').name
     if startDate.toString() == endDate.toString() && view == 'month'
+      $(@el).fullCalendar('gotoDate', startDate)
       $(@el).fullCalendar('changeView', 'agendaWeek')
       return
     if allDay
